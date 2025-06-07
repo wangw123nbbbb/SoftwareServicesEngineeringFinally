@@ -42,7 +42,7 @@ mybatis-plus:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/ # 稍后会替换为您的 "lab5" 地址
+      defaultZone: http://eurekaServer18001:18001/eureka/,http://eurekaServer18002:18002/eureka/
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
