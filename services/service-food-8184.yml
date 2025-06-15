@@ -1,0 +1,12 @@
+server:
+  port: 8184
+
+# 8184实例特定配置
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+# 实例特定版本号
+food:
+  version: 1.0.0
+  instance: 8184-instance 

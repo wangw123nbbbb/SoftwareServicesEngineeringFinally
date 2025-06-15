@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+spring:
+  # 特定服务的数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/elm?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+# MyBatis Plus特定配置
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: ynu.edu.user.entity
+
+# 用户服务特定的熔断器配置
+resilience4j:
+  circuitbreaker:
+    instances:
+      userLoginCircuitBreaker:
+        baseConfig: default
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        failureRateThreshold: 30
+      userRegisterCircuitBreaker:
+        baseConfig: default
+        slidingWindowSize: 8
+        minimumNumberOfCalls: 4
+        failureRateThreshold: 40
+
+# 自定义配置
+user:
+  version: 1.0.0  # 版本号，用于测试配置刷新
